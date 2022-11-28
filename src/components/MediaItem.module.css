@@ -6,19 +6,24 @@
 }
 
 .split_Right {
+  flex: 2;
   border: 2px red solid;
   margin: 0 auto;
+  padding: 1rem 1rem 1rem 1rem;
   overflow: hidden;
   /* t0 auto*/
 }
 
 .split_Left {
-  border-radius: 6px;
+  border: 2px red solid;
+  flex: 1;
 }
 
 .split_Left img {
-  height: 100%;
+  width: 100%;
   padding: 1rem 0 1rem 1rem;
+  aspect-ratio: 1 / 1.5;
+  object-fit: cover;
 }
 
 .split_Right * {
