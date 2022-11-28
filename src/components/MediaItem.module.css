@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  color: #ced1e2;
+  width: min(90vw, 47rem);
+  /* height: 20vh; */
+}
+
+.split_Right {
+  border: 2px red solid;
+  margin: 0 auto;
+  overflow: hidden;
+  /* t0 auto*/
+}
+
+.split_Left {
+  border-radius: 6px;
+}
+
+.split_Left img {
+  height: 100%;
+  padding: 1rem 0 1rem 1rem;
+}
+
+.split_Right * {
+  text-align: center;
+}

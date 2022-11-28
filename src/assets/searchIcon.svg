@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="52.629" height="52.934" viewBox="0 0 52.629 52.934">
+  <defs>
+    <filter id="Path_402" x="0.578" y="2.579" width="50.353" height="50.355" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-opacity="0.302"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Icon_Search_Sharp" data-name="Icon / Search / Sharp" opacity="0.88">
+    <rect id="Box" width="52.629" height="52.629" fill="none"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_402)">
+      <path id="Path_402-2" data-name="Path 402" d="M935.415-1390.879h-1.741l-.605-.6a14.187,14.187,0,0,0,3.438-9.267A14.253,14.253,0,0,0,922.253-1415,14.253,14.253,0,0,0,908-1400.746a14.253,14.253,0,0,0,14.254,14.253,14.188,14.188,0,0,0,9.265-3.434l.605.6v1.737l10.96,10.945,3.269-3.27-10.938-10.964Zm-13.161,0a9.866,9.866,0,0,1-9.868-9.868,9.867,9.867,0,0,1,9.868-9.868,9.869,9.869,0,0,1,9.868,9.868,9.867,9.867,0,0,1-9.868,9.868Z" transform="translate(-901.42 1421.58)" fill="#8a90a9" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

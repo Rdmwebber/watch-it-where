@@ -1,33 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
 import Input from "./Input";
 import { useRef } from "react";
 import getResults from "../util/sendFetchRequest";
+import { useContext } from "react";
+import ResultsContext from "../store/resultsContext";
+import Card from "./UI/Card";
 
 function Form() {
-  const [mediaList, setMediaList] = useState();
+  console.log("render form");
   const mediaTitleRef = useRef();
+  const ctx = useContext(ResultsContext);
+
+  console.log(ctx.searchResults);
 
   const submitHandler = (event) => {
     event.preventDefault();
+    const inputData = mediaTitleRef.current.value.toLowerCase();
 
-    try {
-      getResults(mediaTitleRef.current.value.toLowerCase());
-    } catch (err) {
-      console.log(err);
+    if (inputData.trim().length < 3) {
+      return;
     }
+
+    getResults(inputData, ctx);
+  };
+
+  const clearResultsHandler = (event) => {
+    event.preventDefault();
+    ctx.clearResults();
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <Input
-        label="Title"
-        htmlFor="title"
-        type="text"
-        id=""
-        reference={mediaTitleRef}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <Card>
+      <form onSubmit={submitHandler}>
+        <Input
+          label="Title"
+          htmlFor="title"
+          type="text"
+          id=""
+          reference={mediaTitleRef}
+        />
+        <button type="submit">Submit</button>
+        <button type="button" onClick={clearResultsHandler}>
+          Clear Results
+        </button>
+      </form>
+    </Card>
   );
 }
 
