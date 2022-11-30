@@ -6,21 +6,24 @@ import ResultsContext from "./store/resultsContext";
 import LoadingSpinner from "./components/UI/LoadingSpinner";
 import Nav from "./components/UI/Nav";
 import TypographyHeader from "./components/UI/TypographyHeader";
+import MoreInfo from "./components/MoreInfo";
 
 function App() {
   console.log("render app");
   const ctx = useContext(ResultsContext);
   const hasResults = !!ctx.searchResults.length;
   const isLoading = ctx.isLoading;
+  const moreInfoItem = ctx.moreInfo;
+  // const
 
   return (
     <div className={classes.globalContainer}>
       <Nav />
       <TypographyHeader />
-      <Form />
+      {moreInfoItem ? <MoreInfo /> : <MediaList />}
+      {/* <Form /> */}
       {isLoading && <LoadingSpinner />}
       {/* {hasResults && <MediaList />} */}
-      <MediaList />
     </div>
   );
 }

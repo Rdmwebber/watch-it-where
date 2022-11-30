@@ -1,0 +1,8 @@
+div.containers {
+  width: min(90vw, 47rem);
+  border: 2px red solid;
+}
+
+.exit {
+  color: red;
+}

@@ -1,5 +1,4 @@
 .logo {
   margin: 1rem auto 0;
-  /* width: 75vw; */
   width: min(75vw, 47rem);
 }
