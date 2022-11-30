@@ -3,6 +3,8 @@ import React, { useState } from "react";
 const ResultsContext = React.createContext({
   isLoading: false,
   searchResults: [],
+  moreInfoItem: null,
+  setMoreInfo: () => {},
   setResults: () => {},
   clearResults: () => {},
   setIsLoading: () => {},
@@ -12,6 +14,12 @@ export const ResultsContextProvider = (props) => {
   const [resultState, setResultState] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const [moreInfo, setMoreInfoItem] = useState(null);
+
+  const setMoreInfoHandler = (item) => {
+    setMoreInfoItem(item);
+  };
 
   const setResultsHandler = (result) => {
     setResultState(result);
@@ -27,6 +35,8 @@ export const ResultsContextProvider = (props) => {
         isLoading: isLoading,
         setIsLoading: setIsLoading,
         searchResults: resultState,
+        moreInfo: moreInfo,
+        setMoreInfo: setMoreInfoHandler,
         clearResults: clearResultsHandler,
         setResults: setResultsHandler,
       }}
