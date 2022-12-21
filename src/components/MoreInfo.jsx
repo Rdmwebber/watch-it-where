@@ -1,24 +1,87 @@
 import React from "react";
 import { useContext } from "react";
 import ResultsContext from "../store/resultsContext";
-import Card from "./UI/Card";
 import classes from "./MoreInfo.module.css";
+import imdbLogo from "../assets/IMDb.png";
+import checkStreamingService from "../util/checkStreamingService";
+import trimString from "../util/trimString";
 
 function MoreInfo() {
-  const ctx = useContext(ResultsContext);
+  const { moreInfo, setMoreInfo } = useContext(ResultsContext);
+
+  console.log(moreInfo);
+
   const clearMoreInfoHandler = () => {
-    ctx.setMoreInfo(null);
+    setMoreInfo(null);
   };
 
+  const { streamingLogo, streamingLink } = checkStreamingService(
+    moreInfo.streamingInfo
+  );
+
+  const formattedImdbScore = function (imdbScore) {
+    const decimalScore = imdbScore.toString().split("").join(".");
+    return `${decimalScore}/10`;
+  };
+
+  const formattedScoreResult = formattedImdbScore(moreInfo.imdbRating);
+
+  // formatting votes from full number to abbreviated nK
+  const formattedVoteCount = function (voteCount) {
+    const truncatedCount = voteCount.toString().slice(0, -3);
+    return `${truncatedCount}k Votes`;
+  };
+
+  const formattedVoteCountResult = formattedVoteCount(moreInfo.imdbVoteCount);
+
+  const formattedRunTime = function (runtime) {
+    const hrs = Math.floor(runtime / 60);
+    const hrsZeroGuarded = () => {
+      if (hrs < 1) {
+        return "";
+      }
+      return `${hrs}H`;
+    };
+    const mins = runtime % 60;
+    return `${hrsZeroGuarded()} ${mins}M`;
+  };
+
+  const formattedRunTimeResult = formattedRunTime(moreInfo.runtime);
+
+  const trimmmedTitleString = trimString(moreInfo.title, 50);
+
   return (
-    <Card>
-      <div className={classes.containers}>
-        <h1 className={classes.exit} onClick={clearMoreInfoHandler}>
-          X
-        </h1>
-        <p>WHATS GOING On</p>
+    <section
+      onClick={clearMoreInfoHandler}
+      style={{ backgroundImage: `url(${moreInfo.posterURLs[500]})` }}
+      className={classes.container}
+    >
+      <h2 className={classes.media_title}>{trimmmedTitleString}</h2>
+      <div className={classes.year_rating__container}>
+        <h3 className={classes.media_year}>{moreInfo.year}</h3>
+        <div className={classes.score_logo__container}>
+          <img src={imdbLogo} />
+          <div className={classes.score_votes__container}>
+            <h5>{formattedScoreResult}</h5>
+            <h5>{formattedVoteCountResult}</h5>
+          </div>
+        </div>
+        <h3>{formattedRunTimeResult}</h3>
       </div>
-    </Card>
+      <div className={classes.overview__container}>
+        <p>{moreInfo.overview}</p>
+      </div>
+      <a href={streamingLink} target="_blank">
+        <div className={classes.streaming_service__container}>
+          <h3>WATCH IT ON</h3>
+          <img
+            className={classes.streaming_service}
+            src={streamingLogo}
+            alt="streaming source"
+          />
+        </div>
+      </a>
+    </section>
   );
 }
 
