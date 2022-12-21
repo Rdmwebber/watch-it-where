@@ -34,6 +34,7 @@ function MoreInfo() {
 
   const formattedVoteCountResult = formattedVoteCount(moreInfo.imdbVoteCount);
 
+  //formats runtime from minutes to hours and minutes
   const formattedRunTime = function (runtime) {
     const hrs = Math.floor(runtime / 60);
     const hrsZeroGuarded = () => {
@@ -46,7 +47,26 @@ function MoreInfo() {
     return `${hrsZeroGuarded()} ${mins}M`;
   };
 
-  const formattedRunTimeResult = formattedRunTime(moreInfo.runtime);
+  // checks for number of seasons and returns proper string
+  const checkForMultipleSeasons = function () {
+    if (moreInfo.seasons > 1) {
+      return `${moreInfo.seasons} Seasons`;
+    }
+    if (moreInfo.seasons === 1) {
+      return `${moreInfo.seasons} Season`;
+    }
+  };
+
+  // function to determine if media is a series to display the number of episodes and if it is a movie the runtime
+  const runtimeOrEpisodes = function () {
+    if (moreInfo.hasOwnProperty("runtime")) {
+      return formattedRunTime(moreInfo.runtime);
+    }
+    if (moreInfo.hasOwnProperty("seasons")) {
+      return checkForMultipleSeasons();
+    }
+  };
+  console.log(runtimeOrEpisodes());
 
   const trimmmedTitleString = trimString(moreInfo.title, 50);
 
@@ -66,7 +86,7 @@ function MoreInfo() {
             <h5>{formattedVoteCountResult}</h5>
           </div>
         </div>
-        <h3>{formattedRunTimeResult}</h3>
+        <h3>{runtimeOrEpisodes()}</h3>
       </div>
       <div className={classes.overview__container}>
         <p>{moreInfo.overview}</p>
