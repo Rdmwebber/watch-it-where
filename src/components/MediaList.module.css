@@ -2,6 +2,34 @@
   list-style: none;
 } */
 
+.results_list__container {
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 0 auto;
+  width: min(95vw, 50rem);
+}
+
 ul {
   padding-left: 0;
+  /* border: 1px red solid; */
+}
+
+.results_list__container::-webkit-scrollbar {
+  width: min(0.5rem, 1vw);
+}
+.results_list__container::-webkit-scrollbar-track {
+  background: var(--dark-purple);
+  /* width: 0.5rem; */
+  border-radius: 100vw;
+  margin-block: 3rem;
+}
+
+.results_list__container::-webkit-scrollbar-thumb {
+  background: var(--light-red);
+  border-radius: 100vw;
+}
+
+.results_list__container::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-red);
 }

@@ -1,4 +1,4 @@
-import classes from "./App.module.css";
+// import classes from "./App.module.css";
 import Form from "./components/Form";
 import MediaList from "./components/MediaList";
 import { useContext } from "react";
@@ -17,13 +17,13 @@ function App() {
   // const
 
   return (
-    <div className={classes.globalContainer}>
+    <div>
       <Nav />
       <TypographyHeader />
-      {moreInfoItem ? <MoreInfo /> : <MediaList />}
-      {/* <Form /> */}
+      {!hasResults && !isLoading && <Form />}
       {isLoading && <LoadingSpinner />}
-      {/* {hasResults && <MediaList />} */}
+      {hasResults && !moreInfoItem && <MediaList />}
+      {hasResults && moreInfoItem && <MoreInfo />}
     </div>
   );
 }

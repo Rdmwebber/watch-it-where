@@ -6,7 +6,7 @@ import DUMMY_RESULTS from "../util/DUMMYRESULTS";
 import classes from "./MediaList.module.css";
 
 function MediaList() {
-  // use ctx.searchResults.map to get data
+  // use .map to get data
   const ctx = useContext(ResultsContext);
 
   // using dummy data while doing dev
@@ -14,11 +14,13 @@ function MediaList() {
   const data = DUMMY_RESULTS;
 
   return (
-    <ul>
-      {data.map((item) => (
-        <MediaItem key={item.imdbID} mediaObj={item} />
-      ))}
-    </ul>
+    <section className={classes.results_list__container}>
+      <ul>
+        {ctx.searchResults.map((item) => (
+          <MediaItem key={item.imdbID} mediaObj={item} />
+        ))}
+      </ul>
+    </section>
   );
 }
 

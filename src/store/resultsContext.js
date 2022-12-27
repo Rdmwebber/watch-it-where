@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const ResultsContext = React.createContext({
   isLoading: false,
   searchResults: [],
-  moreInfoItem: null,
+  moreInfo: null,
   setMoreInfo: () => {},
   setResults: () => {},
   clearResults: () => {},
