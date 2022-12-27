@@ -1,17 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .spinner {
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 160px;
+  height: 160px;
 }
 .spinner:after {
   content: " ";
   display: block;
-  width: 64px;
-  height: 64px;
+  width: 128px;
+  height: 128px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid teal;
-  border-color: teal transparent teal transparent;
+  border: 10px solid var(--light-red);
+  border-color: var(--light-red) transparent var(--light-red) transparent;
   animation: spinner 1.2s linear infinite;
 }
 @keyframes spinner {
