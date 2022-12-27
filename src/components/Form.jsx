@@ -10,13 +10,15 @@ function Form() {
   const ctx = useContext(ResultsContext);
   const [toggleChecked, setToggleChecked] = useState(false);
   console.log(ctx.searchResults);
+  const [titleIsEmpty, setTitleIsEmpty] = useState(false);
 
   const submitHandler = (event) => {
     event.preventDefault();
     // console.log(mediaTitleRef);
     const inputData = mediaTitleRef.current.value.toLowerCase();
 
-    if (inputData.trim().length < 2) {
+    if (inputData.trim() === "") {
+      setTitleIsEmpty(true);
       return;
     }
 
@@ -49,6 +51,7 @@ function Form() {
             id="title"
             ref={mediaTitleRef}
           />
+          {titleIsEmpty && <p>Title value can't be empty</p>}
           <div className={classes.form_toggle__container}>
             <h4 className={`${classes.form_movie__label} ${seriesClass}`}>
               Movie
