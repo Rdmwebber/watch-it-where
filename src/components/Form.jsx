@@ -9,10 +9,9 @@ function Form() {
   const mediaTitleRef = useRef();
   const ctx = useContext(ResultsContext);
   const [toggleChecked, setToggleChecked] = useState(false);
-  console.log(ctx.searchResults);
   const [titleIsEmpty, setTitleIsEmpty] = useState(false);
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     // console.log(mediaTitleRef);
     const inputData = mediaTitleRef.current.value.toLowerCase();
@@ -23,8 +22,10 @@ function Form() {
     }
 
     const mediaType = toggleChecked ? "series" : "movie";
-
-    getResults(inputData, ctx, mediaType);
+    ctx.setIsLoading(true);
+    const searchResults = await getResults(inputData, mediaType);
+    ctx.setResults(searchResults);
+    ctx.setIsLoading(false);
   };
 
   const toggleHandler = () => {
