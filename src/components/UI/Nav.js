@@ -10,6 +10,7 @@ function Nav() {
 
   const clearResultsHandler = (event) => {
     event.preventDefault();
+    ctx.setIsFirstLanding(false);
     ctx.setMoreInfo(null);
     ctx.clearResults();
   };

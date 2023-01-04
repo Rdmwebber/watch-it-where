@@ -3,7 +3,6 @@ import getResults from "../util/sendFetchRequest";
 import { useContext, useRef, useState } from "react";
 import ResultsContext from "../store/resultsContext";
 import classes from "./Form.module.css";
-// import Card from "./UI/Card";
 
 function Form() {
   const mediaTitleRef = useRef();

@@ -3,10 +3,11 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   width: min(90vw, 47rem);
   border-radius: 20px;
-  padding: 7rem 0rem;
+  padding: 15vh 0;
   margin: 0 auto;
   color: var(--white-font);
   font-family: coolveticaRegIt;
+  /* border: 2px red solid; */
 }
 
 .form_input__container {
@@ -21,11 +22,11 @@
 
 .form_title__input {
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 4vh;
   border-radius: 10px;
   border: 2px var(--med-purple) solid;
   transition: border 0.75s;
-  height: 2rem;
+  height: 2.5rem;
   color: var(--grey-font);
   background: var(--light-purple);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -57,7 +58,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 4vh;
 }
 
 .form_toggle__container h4 {
