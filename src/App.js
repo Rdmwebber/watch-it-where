@@ -7,6 +7,7 @@ import LoadingSpinner from "./components/UI/LoadingSpinner";
 import Nav from "./components/UI/Nav";
 import TypographyHeader from "./components/UI/TypographyHeader";
 import MoreInfo from "./components/MoreInfo";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   console.log("render app");
@@ -14,13 +15,14 @@ function App() {
   const hasResults = !!ctx.searchResults.length;
   const isLoading = ctx.isLoading;
   const moreInfoItem = ctx.moreInfo;
-  // const
+  const firstLanding = ctx.isFirstLanding;
 
   return (
     <div>
       <Nav />
       <TypographyHeader />
-      {!hasResults && !isLoading && <Form />}
+      {firstLanding && <LandingPage />}
+      {!firstLanding && !hasResults && !isLoading && <Form />}
       {isLoading && <LoadingSpinner />}
       {hasResults && !moreInfoItem && <MediaList />}
       {hasResults && moreInfoItem && <MoreInfo />}
