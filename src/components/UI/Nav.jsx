@@ -11,12 +11,12 @@ function Nav() {
   const clearResultsHandler = (event) => {
     event.preventDefault();
     ctx.setIsFirstLanding(false);
-    ctx.setMoreInfo(null);
-    ctx.clearResults();
+    ctx.setShowMoreInfo(false);
+    ctx.setShowResults(false);
   };
 
   return (
-    <nav className={classes.nav}>
+    <nav className={classes.nav} key="nav">
       <img src={logo} alt="" />
       <a onClick={clearResultsHandler}>
         <img src={searchIcon} />

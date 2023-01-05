@@ -14,7 +14,9 @@ function MediaItem(props) {
 
   const moreInfoHandler = (event) => {
     event.preventDefault();
-    ctx.setMoreInfo(props.mediaObj);
+    ctx.setMoreInfo([props.mediaObj]);
+    ctx.setShowResults(false);
+    ctx.setShowMoreInfo(true);
   };
 
   return (

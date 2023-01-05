@@ -3,6 +3,7 @@ import getResults from "../util/sendFetchRequest";
 import { useContext, useRef, useState } from "react";
 import ResultsContext from "../store/resultsContext";
 import classes from "./Form.module.css";
+import { motion } from "framer-motion";
 
 function Form() {
   const mediaTitleRef = useRef();
@@ -24,6 +25,7 @@ function Form() {
     ctx.setIsLoading(true);
     const searchResults = await getResults(inputData, mediaType);
     ctx.setResults(searchResults);
+    ctx.setShowResults(true);
     ctx.setIsLoading(false);
   };
 
@@ -41,7 +43,14 @@ function Form() {
   // };
 
   return (
-    <section className={classes.form__container}>
+    <motion.section
+      className={classes.form__container}
+      key="form"
+      initial={{ x: "100vw" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100vw" }}
+      transition={({ duration: 1 }, { delay: 0.75 })}
+    >
       <form onSubmit={submitHandler}>
         <div className={classes.form_input__container}>
           <label htmlFor="title">{movieOrSeries} Title </label>
@@ -68,15 +77,17 @@ function Form() {
           </div>
           {/* <label htmlFor="movie/series">Movie/Series</label> */}
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 1.1 }}
             className={`${classes.form_submit__button} ${seriesClass}`}
             type="submit"
           >
             Search
-          </button>
+          </motion.button>
         </div>
       </form>
-    </section>
+    </motion.section>
   );
 }
 

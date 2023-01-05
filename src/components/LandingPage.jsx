@@ -7,6 +7,7 @@ import craveLogo from "../assets/Crave.svg";
 import disneyLogo from "../assets/Disney.svg";
 import { useContext } from "react";
 import ResultsContext from "../store/resultsContext";
+import { motion } from "framer-motion";
 
 function LandingPage() {
   const ctx = useContext(ResultsContext);
@@ -17,7 +18,14 @@ function LandingPage() {
   };
 
   return (
-    <section>
+    <motion.section
+      className={classes.landing_page__container}
+      key="landingPage"
+      initial={false}
+      animate={{ x: 0 }}
+      exit={{ x: "-100vw" }}
+      transition={{ duration: 0.75 }}
+    >
       <div className={classes.streaming_service__container}>
         <div className={classes.streaming_service__logo}>
           <img
@@ -44,14 +52,16 @@ function LandingPage() {
           Find where you can stream any movie or series in <span>CANADA</span>
         </h3>
       </div>
-      <button
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 1 }}
         onClick={searchButtonHandler}
         className={`${classes.landing_page__button} `}
         type="button"
       >
         Search
-      </button>
-    </section>
+      </motion.button>
+    </motion.section>
   );
 }
 
