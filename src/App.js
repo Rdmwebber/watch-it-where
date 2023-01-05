@@ -8,24 +8,31 @@ import Nav from "./components/UI/Nav";
 import TypographyHeader from "./components/UI/TypographyHeader";
 import MoreInfo from "./components/MoreInfo";
 import LandingPage from "./components/LandingPage";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   console.log("render app");
   const ctx = useContext(ResultsContext);
-  const hasResults = !!ctx.searchResults.length;
+  // const hasResults = !!ctx.searchResults.length;
   const isLoading = ctx.isLoading;
-  const moreInfoItem = ctx.moreInfo;
+  // const moreInfoItem = !!ctx.moreInfo.length;
+  const showMoreInfo = ctx.showMoreInfo;
+  const showResults = ctx.showResults;
   const firstLanding = ctx.isFirstLanding;
 
   return (
     <div>
       <Nav />
       <TypographyHeader />
-      {firstLanding && <LandingPage />}
-      {!firstLanding && !hasResults && !isLoading && <Form />}
+      <AnimatePresence>{firstLanding && <LandingPage />}</AnimatePresence>
+      <AnimatePresence>
+        {!firstLanding && !showResults && !showMoreInfo && !isLoading && (
+          <Form />
+        )}
+      </AnimatePresence>
       {isLoading && <LoadingSpinner />}
-      {hasResults && !moreInfoItem && <MediaList />}
-      {hasResults && moreInfoItem && <MoreInfo />}
+      <AnimatePresence>{showResults && <MediaList />}</AnimatePresence>
+      <AnimatePresence>{showMoreInfo && <MoreInfo />}</AnimatePresence>
     </div>
   );
 }
