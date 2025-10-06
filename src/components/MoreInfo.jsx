@@ -5,14 +5,19 @@ import classes from "./MoreInfo.module.css";
 import imdbLogo from "../assets/IMDb.png";
 import checkStreamingService from "../util/checkStreamingService";
 import trimString from "../util/trimString";
+import { motion } from "framer-motion";
 
 function MoreInfo() {
-  const { moreInfo, setMoreInfo } = useContext(ResultsContext);
+  const {
+    moreInfo: moreInfoArray,
+    setShowMoreInfo,
+    setShowResults,
+  } = useContext(ResultsContext);
+  const moreInfo = moreInfoArray[0];
 
-  console.log(moreInfo);
-
-  const clearMoreInfoHandler = () => {
-    setMoreInfo(null);
+  const hideMoreInfoHandler = () => {
+    setShowMoreInfo(false);
+    setShowResults(true);
   };
 
   const { streamingLogo, streamingLink } = checkStreamingService(
@@ -71,10 +76,15 @@ function MoreInfo() {
   const trimmmedTitleString = trimString(moreInfo.title, 50);
 
   return (
-    <section
-      onClick={clearMoreInfoHandler}
+    <motion.section
+      onClick={hideMoreInfoHandler}
       style={{ backgroundImage: `url(${moreInfo.posterURLs[500]})` }}
       className={classes.container}
+      key="moreInfo"
+      initial={{ x: "100vw" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100vw" }}
+      transition={{ duration: 1 }}
     >
       <h2 className={classes.media_title}>{trimmmedTitleString}</h2>
       <div className={classes.year_rating__container}>
@@ -101,7 +111,7 @@ function MoreInfo() {
           />
         </div>
       </a>
-    </section>
+    </motion.section>
   );
 }
 
