@@ -49,8 +49,8 @@ export const ResultsContextProvider = (props) => {
     setResultState([]);
   };
 
-  const setIsFirstLandingHandler = () => {
-    setIsFirstLanding(false);
+  const setIsFirstLandingHandler = (value) => {
+    setIsFirstLanding(value);
   };
 
   return (

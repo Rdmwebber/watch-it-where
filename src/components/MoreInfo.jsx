@@ -83,7 +83,8 @@ function MoreInfo() {
       key="moreInfo"
       initial={{ x: "100vw" }}
       animate={{ x: 0 }}
-      transition={({ duration: 1 }, { delay: 0.75 })}
+      exit={{ x: "-100vw" }}
+      transition={{ duration: 1 }}
     >
       <h2 className={classes.media_title}>{trimmmedTitleString}</h2>
       <div className={classes.year_rating__container}>

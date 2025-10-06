@@ -1,5 +1,6 @@
 import React from "react";
 import getResults from "../util/sendFetchRequest";
+import DUMMY_RESULTS from "../util/DUMMYRESULTS";
 import { useContext, useRef, useState } from "react";
 import ResultsContext from "../store/resultsContext";
 import classes from "./Form.module.css";
@@ -23,8 +24,10 @@ function Form() {
 
     const mediaType = toggleChecked ? "series" : "movie";
     ctx.setIsLoading(true);
-    const searchResults = await getResults(inputData, mediaType);
-    ctx.setResults(searchResults);
+    // Not currently paying for API. Using dummy data for example.
+    //const searchResults = await getResults(inputData, mediaType);
+    //ctx.setResults(searchResults);
+    ctx.setResults(DUMMY_RESULTS);
     ctx.setShowResults(true);
     ctx.setIsLoading(false);
   };
@@ -49,7 +52,7 @@ function Form() {
       initial={{ x: "100vw" }}
       animate={{ x: 0 }}
       exit={{ x: "-100vw" }}
-      transition={({ duration: 1 }, { delay: 0.75 })}
+      transition={({ duration: 1 }, { ease: "easeOut" })}
     >
       <form onSubmit={submitHandler}>
         <div className={classes.form_input__container}>

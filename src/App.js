@@ -22,10 +22,10 @@ function App() {
 
   return (
     <div>
-      <Nav />
+      {/* <Nav />
       <TypographyHeader />
       <AnimatePresence>{firstLanding && <LandingPage />}</AnimatePresence>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {!firstLanding && !showResults && !showMoreInfo && !isLoading && (
           <Form />
         )}
@@ -33,6 +33,21 @@ function App() {
       {isLoading && <LoadingSpinner />}
       <AnimatePresence>{showResults && <MediaList />}</AnimatePresence>
       <AnimatePresence>{showMoreInfo && <MoreInfo />}</AnimatePresence>
+       */}
+
+      <Nav />
+      <TypographyHeader />
+      <AnimatePresence wait="true">
+        {firstLanding && <LandingPage />}
+
+        {!firstLanding && !showResults && !showMoreInfo && !isLoading && (
+          <Form />
+        )}
+
+        {isLoading && <LoadingSpinner />}
+        {showResults && <MediaList />}
+        {showMoreInfo && <MoreInfo />}
+      </AnimatePresence>
     </div>
   );
 }

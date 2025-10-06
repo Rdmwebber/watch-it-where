@@ -24,7 +24,7 @@ function LandingPage() {
       initial={false}
       animate={{ x: 0 }}
       exit={{ x: "-100vw" }}
-      transition={{ duration: 0.75 }}
+      transition={({ duration: 1 }, { ease: "easeOut" })}
     >
       <div className={classes.streaming_service__container}>
         <div className={classes.streaming_service__logo}>
