@@ -1,47 +1,55 @@
-Watch It Where  
-This is a web application designed to help users find where they can stream or watch movies and TV shows online. The project was bootstrapped with Create React App.
+# 🍿 Watch It Where
 
-Technologies Used  
-React: A JavaScript library for building user interfaces.
+A simple and clean React application that allows users to search for a movie or TV series and instantly find out which streaming services it's available on.
 
-JavaScript: The primary programming language for the application logic.
+![Watch It Where Demo](https://www.youtube.com/watch?v=Gv4mDhJVfNo)
 
-CSS: Used for styling and layout.
+---
 
-HTML: The structure of the web pages.
+## 🚀 Core Features
 
-Getting Started  
-Follow these steps to set up and run the project locally.
+- **Universal Search:** Find any movie or TV series by title.
+- **Service Toggling:** Easily switch your search between movies and TV shows.
+- **Streaming Availability:** Instantly see a list of services (like Netflix, Prime Video, Disney+, Apple TV+, and Crave) that host the title.
+- **Clean UI:** A minimal, responsive interface built with modern React and CSS.
 
-Prerequisites  
-Node.js (LTS version recommended)
+---
 
-npm (Node Package Manager)
+## 🛠️ Tech Stack
 
-Installation  
-Clone the repository to your local machine:
+This project was built using:
 
-git clone [https://github.com/Rdmwebber/watch-it-where.git](https://github.com/Rdmwebber/watch-it-where.git)
+- **Frontend:** React
+- **State Management:** React Context API
+- **API Calls:** Axios
+- **Animations:** Framer Motion
+- **Styling:** CSS Modules
+- **Data:** [Streaming Availability API](https://rapidapi.com/streaming-availability/api/streaming-availability) from RapidAPI
 
-Navigate to the project directory:
+---
 
-cd watch-it-where
+## ⚙️ Getting Started
 
-Install the necessary dependencies:
+To get a local copy up and running, follow these simple steps.
 
-npm install
+### Prerequisites
 
-Running the Application
-In the project directory, you can run the following commands:
+- Node.js (v16 or later)
+- npm
+- A [RapidAPI](https://rapidapi.com/) account to get an API key.
 
-npm start
-This command runs the app in development mode. Open http://localhost:3000 to view it in your browser. The page will automatically reload if you make changes.
+### Installation
 
-npm test
-This command launches the test runner in interactive watch mode.
+1. **Clone the repo**
+   git clone [https://github.com/Rdmwebber/watch-it-where.git](https://github.com/Rdmwebber/watch-it-where.git)
+2. **Install NPM packages**
+   npm install
+3. **Add your API Key**
+   - Get your API key from the [Streaming Availability API](https://rapidapi.com/streaming-availability/api/streaming-availability) page on RapidAPI.
+   - Open the file `src/store/apiOptions.js`.
+   - Replace the hardcoded key in the `headers` object with your own:
+     'X-RapidAPI-Key': 'YOUR_API_KEY_HERE',
+4. **Run the app**
+   npm start
 
-npm run build
-This command builds the app for production and stores it in the build folder.
-
-Learn More
-You can learn more in the Create React App documentation.
+   The application will open at `http://localhost:3000`.
