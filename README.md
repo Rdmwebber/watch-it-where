@@ -2,7 +2,7 @@
 
 A simple and clean React application that allows users to search for a movie or TV series and instantly find out which streaming services it's available on.
 
-![Watch It Where Demo](https://www.youtube.com/watch?v=Gv4mDhJVfNo)
+[Watch It Where Demo](https://www.youtube.com/watch?v=Gv4mDhJVfNo)
 
 ---
 
